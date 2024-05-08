@@ -1,6 +1,12 @@
 # macOS
 .DS_Store
 
+*.tgz
+dist
+dist-types
+dist-scalprum
+dist-dynamic
+
 # Logs
 logs
 *.log

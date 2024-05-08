@@ -1,6 +1,6 @@
 {
   "name": "@backstage/plugin-catalog-backend-module-ldap-dynamic",
-  "version": "0.5.34-dynamic.1",
+  "version": "0.5.34-dynamic.2",
   "description": "A Backstage catalog backend module that helps integrate towards LDAP",
   "backstage": {
     "role": "backend-plugin-module"
@@ -25,7 +25,8 @@
   "files": [
     "dist",
     "config.d.ts",
-    "dist-scalprum"
+    "dist-scalprum",
+    "dist-dynamic"
   ],
   "scripts": {},
   "dependencies": {
