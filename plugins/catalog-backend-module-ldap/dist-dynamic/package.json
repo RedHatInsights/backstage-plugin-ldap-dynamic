@@ -1,0 +1,60 @@
+{
+  "name": "@backstage/plugin-catalog-backend-module-ldap-dynamic",
+  "version": "0.5.34-next.2",
+  "description": "A Backstage catalog backend module that helps integrate towards LDAP",
+  "backstage": {
+    "role": "backend-plugin-module"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.cjs.js",
+    "types": "dist/index.d.ts"
+  },
+  "keywords": [
+    "backstage"
+  ],
+  "homepage": "https://backstage.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/backstage/backstage",
+    "directory": "plugins/catalog-backend-module-ldap"
+  },
+  "license": "Apache-2.0",
+  "main": "dist/index.cjs.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "config.d.ts",
+    "dist-scalprum"
+  ],
+  "scripts": {},
+  "dependencies": {
+    "@janus-idp/cli": "^1.8.1",
+    "@types/ldapjs": "^2.2.5",
+    "ldapjs": "^2.3.3",
+    "lodash": "^4.17.21",
+    "uuid": "^9.0.0",
+    "winston": "^3.2.1"
+  },
+  "devDependencies": {},
+  "configSchema": "config.d.ts",
+  "bundleDependencies": true,
+  "peerDependencies": {
+    "@backstage/backend-dynamic-feature-service": "^0.2.8",
+    "@backstage/backend-tasks": "workspace:^",
+    "@backstage/catalog-model": "workspace:^",
+    "@backstage/config": "workspace:^",
+    "@backstage/errors": "workspace:^",
+    "@backstage/plugin-catalog-common": "workspace:^",
+    "@backstage/plugin-catalog-node": "workspace:^",
+    "@backstage/types": "workspace:^"
+  },
+  "overrides": {
+    "@aws-sdk/util-utf8-browser": {
+      "@smithy/util-utf8": "^2.0.0"
+    }
+  },
+  "resolutions": {
+    "@aws-sdk/util-utf8-browser": "npm:@smithy/util-utf8@~2"
+  }
+}
