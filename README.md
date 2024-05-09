@@ -4,36 +4,38 @@ This repo is for wrapping the Backstage LDAP Entity Provider plugin as a dynamic
 
 ### Build:
 ```sh
-yarn workspace @backstage/plugin-catalog-backend-module-ldap export-dynamic --embed-package ldapjs
+./build.sh
 ```
 
-### Package:
-```sh
-cd plugins/catalog-backend-module-ldap
-npm pack
-shasum -a 256 *.tgz | awk '{print $1}' | xxd -r -p | base64
-```
-
-### Publish:
-Upload the tarball to a release with the integrity SHA above prefixed with `sha256-`
+The build script will show the integrity sha. The plugin tarball will be under `plugins/catalog-backend-module-ldap/dist-dynamic` 
 
 ### Config:
+In your dynamic plugins config:
 ```yaml
-- package: "https://github.com/RedHatInsights/backstage-plugin-ldap-dynamic/releases/download/sometag/backstage-plugin-catalog-backend-module-ldap-someversion.tgz"
-integrity: "sha256-uAmfB+SValdXElpVBPrbk9KzsAPEdNEiAod1H3CEFxI=" 
-disabled: false
-pluginConfig:
-    dynamicPlugins:
-    catalog:
+  - package: "https://github.com/RedHatInsights/backstage-plugin-ldap-dynamic/releases/download/0.5.34-dynamic.DEV/backstage-plugin-catalog-backend-module-ldap-dynamic-0.5.34-dynamic.XXX.tgz"
+    integrity: "sha256-bqQ04rkA62X+SfDAZ22EJcqBzGaz+nTSK4FaZQQ/0KY=" 
+    disabled: false
+    pluginConfig:
+      ldap:
         providers:
-        catalog-backend-module-ldap:
-            id: production
-            target: "127.0.0.1"
-            schedule:
-            frequency:
-                minutes: 60
-            initialDelay:
-                seconds: 15
-            timeout:
-                minutes: 15
+        - target: ldaps://ds.example.net
+          bind:
+            dn: uid=ldap-reader-user,ou=people,ou=example,dc=example,dc=net
+            secret: ${BIND-SECRET}
+          users:
+            dn: ou=people,ou=example,dc=example,dc=net
+            options:
+              filter: (uid=*)
+            map:
+              description: l
+            set:
+              metadata.customField: 'hello'
+          groups:
+            dn: ou=access,ou=groups,ou=example,dc=example,dc=net
+            options:
+              filter: (&(objectClass=some-group-class)(!(groupType=email)))
+            map:
+              description: l
+            set:
+              metadata.customField: 'hello'
 ```
