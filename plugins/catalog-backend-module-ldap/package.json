@@ -1,6 +1,6 @@
 {
   "name": "@backstage/plugin-catalog-backend-module-ldap",
-  "version": "0.5.34-dynamic.2",
+  "version": "0.5.34-dynamic.DEV",
   "description": "A Backstage catalog backend module that helps integrate towards LDAP",
   "backstage": {
     "role": "backend-plugin-module"
@@ -22,7 +22,11 @@
   "license": "Apache-2.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
-  "files": ["dist-dynamic/*.*", "dist-dynamic/dist/**"],
+  "files": [
+    "dist-dynamic/*.*", 
+    "dist-dynamic/dist/**",
+    "dist-dynamic/node_modules/**"
+  ],
   "scripts": {
     "build": "backstage-cli package build",
     "clean": "backstage-cli package clean",

@@ -5,6 +5,7 @@ import { LdapOrgEntityProvider } from '../processors';
 export const dynamicPluginInstaller: BackendDynamicPluginInstaller = {
   kind: 'legacy',
   async catalog(builder, env) {
+    env.logger.info('Installing LDAP org entity provider');
     builder.addEntityProvider(
         LdapOrgEntityProvider.fromConfig(env.config, {
         id: 'development',
