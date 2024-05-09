@@ -23,3 +23,5 @@
 export * from './processors';
 export * from './ldap';
 export * from './dynamic/index';
+
+export { catalogModuleLDAPEntityProvider as default } from './module';

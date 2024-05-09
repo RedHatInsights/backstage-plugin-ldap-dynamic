@@ -24,7 +24,7 @@ import { LdapOrgEntityProvider } from './processors';
 
 export const catalogModuleLDAPEntityProvider = createBackendModule({
   moduleId: 'catalog-backend-module-ldap',
-  pluginId: 'ldap',
+  pluginId: 'catalog',
   register(env, options?: { id?: string, target?: string}) {
     env.registerInit({
       deps: {
@@ -37,7 +37,6 @@ export const catalogModuleLDAPEntityProvider = createBackendModule({
         catalog.addEntityProvider(
             LdapOrgEntityProvider.fromConfig(config, { 
             id: options?.id ?? 'default',
-            target: options?.target ?? 'ldaps://ds-read.example.net',
             logger: loggerToWinstonLogger(logger),
             schedule: scheduler.createScheduledTaskRunner({
               frequency: { minutes: 30 },

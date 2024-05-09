@@ -52,16 +52,6 @@ export interface LdapOrgEntityProviderOptions {
   id: string;
 
   /**
-   * The target that this provider should consume.
-   *
-   * Should exactly match the "target" field of one of the "ldap.providers"
-   * configuration entries.
-   *
-   * @example "ldaps://ds-read.example.net"
-   */
-  target: string;
-
-  /**
    * The logger to use.
    */
   logger: Logger;
@@ -115,15 +105,15 @@ export class LdapOrgEntityProvider implements EntityProvider {
       configRoot.getOptionalConfig('ldap') ||
       configRoot.getOptionalConfig('catalog.processors.ldapOrg');
     const providers = config ? readLdapConfig(config) : [];
-    const provider = providers.find(p => options.target === p.target);
-    if (!provider) {
+    if (providers.length === 0) {
       throw new TypeError(
-        `There is no LDAP configuration that matches "${options.target}". Please add a configuration entry for it under "ldap.providers".`,
+        'There are no LDAP configurations under "ldap.providers"',
       );
     }
+    const provider = providers[0]
 
     const logger = options.logger.child({
-      target: options.target,
+      target: provider.target,
     });
 
     const result = new LdapOrgEntityProvider({

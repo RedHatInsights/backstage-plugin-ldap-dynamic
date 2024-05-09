@@ -8,14 +8,13 @@ export const dynamicPluginInstaller: BackendDynamicPluginInstaller = {
     env.logger.info('Installing LDAP org entity provider');
     builder.addEntityProvider(
         LdapOrgEntityProvider.fromConfig(env.config, {
-        id: 'development',
+        id: 'ldap-entity-provider',
         logger: env.logger,
         schedule: env.scheduler.createScheduledTaskRunner({
           frequency: { hours: 1 },
           timeout: { minutes: 50 },
           initialDelay: { seconds: 15 },
-        }),
-        scheduler: env.scheduler,
+        })
       }),
     );
   },
