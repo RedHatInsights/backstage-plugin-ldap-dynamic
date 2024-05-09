@@ -22,12 +22,7 @@
   "license": "Apache-2.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
-  "files": [
-    "dist",
-    "config.d.ts",
-    "dist-scalprum",
-    "dist-dynamic"
-  ],
+  "files": ["dist-dynamic/*.*", "dist-dynamic/dist/**"],
   "scripts": {
     "build": "backstage-cli package build",
     "clean": "backstage-cli package clean",
