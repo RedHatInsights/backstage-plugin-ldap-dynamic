@@ -35,7 +35,6 @@
   },
   "dependencies": {
     "@backstage/backend-dynamic-feature-service": "^0.2.8",
-    "@janus-idp/cli": "^1.8.1",
     "@backstage/backend-tasks": "workspace:^",
     "@backstage/catalog-model": "workspace:^",
     "@backstage/config": "workspace:^",
@@ -50,6 +49,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@janus-idp/cli": "^1.8.1",
     "@backstage/cli": "workspace:^",
     "@types/lodash": "^4.14.151"
   },
